@@ -1,0 +1,54 @@
+/* 
+  File.strings
+  autodoorctrl
+
+  Created by Jing Wei Li on 9/29/18.
+  Copyright © 2018 Jing Wei Li. All rights reserved.
+*/
+
+// Shared
+"Yes" = "Yes";
+"No" = "No";
+"Cancel" = "Cancel";
+"Message" = "Message";
+"Actions" = "Actions";
+"Continue" = "Continue";
+
+// Biometrics
+"BioCancelTitle" = "Enter RCS ID or Password";
+"BioTitleNone" = "None";
+
+"ResetBioTitle" = "Reset %@";
+"ResetBioMessage" = "This will remove all the login credentials for %@.";
+
+"BioAlertTitle" = "Use %@ for faster future logins?";
+
+// Log In
+"LogInTitle" = "Log In";
+"LoggingInTitle" = "Logging In";
+
+"AdminLoginTitle" = "Admin Login";
+
+"OptionsTitle" = "Options";
+
+"ErrorTitle" = "Error";
+"ErrorWrongCredsTitle" = "Incorrect username or password";
+"ErrorIncompleteCredsTitle" = "Please fill in the username or password";
+"ErrorNoInternetTitle" = "No Internet Connection";
+"ErrorNoDoorsTitle" = "Cannot fetch doors info";
+
+// Doors + Maps
+"DoorSubtitle" = "Coordinate: %.4f, %.4f";
+
+// Opening + Closing Doors
+"OpenDoorTitle" = "Open";
+"CloseDoorTitle" = "Close";
+
+// Services
+"ShowActiveTitle" = "Show Active Students";
+"AddToActiveTitle" = "Add RCSID to Active";
+"registerTitle" = "Register RCSID";
+"removeTitle" = "Remove RCSID";
+
+"enterRCSIDTitle" = "Enter RCSID";
+"myInfoTitle" = "My Info";

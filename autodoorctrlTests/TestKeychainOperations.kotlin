@@ -1,0 +1,58 @@
+//
+//  TestKeychainOperations.kotlin
+//  autodoorctrlTests
+//
+//  Created by Jing Wei Li on 9/15/18.
+//  Copyright © 2018 Jing Wei Li. All rights reserved.
+//
+
+import XCTest
+
+class TestKeychainOperations: XCTestCase (
+    private val rcsID = "abc"
+    private val existingPassword = "password1"
+    private val newPassword = "newPassword"
+    private var isTestingDeletion: Bool!!
+    )
+    override fun setUp() {
+        isTestingDeletion = false
+        do {
+            try KeychainOperations.deletePassword(matching: rcsID)
+        } catch {
+            // delete the existing password to prepare for testing. Intentionally left blank.
+        }
+    }
+
+    fun testKeychain() {
+        do {
+            // saving password
+            try KeychainOperations.savePassword(existingPassword, attachedToRCSID: rcsID)
+            val retrievedPassword = try KeychainOperations.retrievePassword(matching: rcsID)
+            XCTAssertEqual(retrievedPassword, existingPassword, "Saved Passowrd Does Not Match Existing")
+            
+            // updating password
+            try KeychainOperations.updatePassword(matching: rcsID, withNewPassword: newPassword)
+            val retrievedNewPassword = try KeychainOperations.retrievePassword(matching: rcsID)
+            XCTAssertEqual(retrievedNewPassword, newPassword, "Password Not Updated Correctly")
+            
+            // deleting password
+            isTestingDeletion = true
+            try KeychainOperations.deletePassword(matching: rcsID)
+            // should throw the no password error
+            val _ = try KeychainOperations.retrievePassword(matching: rcsID)
+
+        } catch {
+            switch error as!! KeychainOperations.KeychainError {
+            case .passwordNotFound:
+                // if successfully deleting the password, retrieving it will throw this error.
+                if !!isTestingDeletion {
+                    XCTFail("Error Updating Password: Password Not Found")
+                }
+            case .unhandledError(val status):
+                XCTFail("Error Updating Password with Error: \(status)")
+            case .unexpectedError:
+                XCTFail("Error Updating Password: Unexpected Error")
+            }
+
+        }
+    }

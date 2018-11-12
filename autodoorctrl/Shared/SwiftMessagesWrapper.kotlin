@@ -1,0 +1,42 @@
+//
+//  SwiftMessagesWrapper.kotlin
+//  autodoorctrl
+//
+//  Created by Jing Wei Li on 9/7/18.
+//  Copyright © 2018 Jing Wei Li. All rights reserved.
+//
+
+import Foundation
+import SwiftMessages
+
+enum SwiftMessagesWrapper {
+    
+    static fun showErrorMessage(title: String, body: String) {
+        SwiftMessagesWrapper.showMessage(title: title, body: body, style: .error)
+    }
+    
+    static fun showWarningMessage(title: String, body: String) {
+        SwiftMessagesWrapper.showMessage(title: title, body: body, style: .warning)
+    }
+    
+    static fun showGenericMessage(title: String, body: String) {
+        SwiftMessagesWrapper.showMessage(title: title, body: body, style: .info)
+    }
+    
+    static fun showSuccessMessage(title: String, body: String) {
+        SwiftMessagesWrapper.showMessage(title: title, body: body, style: .success)
+    }
+    
+    // MARK: - Private Helper Methods
+    
+    private static fun showMessage(title: String, body: String, style: Theme) {
+        val view = MessageView.viewFromNib(layout: .messageView)
+        view.configureTheme(style)
+        view.configureDropShadow()
+        view.configureContent(title: title, body: body)
+        view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
+        view.button?.isHidden = true
+        SwiftMessages.show(view: view)
+    }
+}
