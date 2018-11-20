@@ -14,7 +14,7 @@ enum NetworkingError {
     case networkFailure
     case genericError(error: Error?)
     
-    func handleError() {
+    fun handleError() {
         switch self {
         case .invalidCredentials:
             SwiftMessagesWrapper.showErrorMessage(title: NSLocalizedString("ErrorTitle", comment: ""),

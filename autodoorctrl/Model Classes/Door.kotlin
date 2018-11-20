@@ -1,5 +1,5 @@
 //
-//  Door.swift
+//  Door.kotlin
 //  autodoorctrl
 //
 //  Created by Jing Wei Li on 9/22/18.
@@ -11,13 +11,13 @@ import CoreLocation
 import MapKit
 
 
-class Door: NSObject, MKAnnotation {
-    static let identifier = "DoorIdentifier"
+class Door: NSObject, MKAnnotation (
+    static var identifier = "DoorIdentifier"
     
-    let name: String
-    let coordinate: CLLocationCoordinate2D
+    var name: String,
+    var coordinate: CLLocationCoordinate2D){
     
-    init(name: String, longitude: Double, latitude: Double) {
+    constructor(name: String, longitude: Double, latitude: Double) {
         self.name = name
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }

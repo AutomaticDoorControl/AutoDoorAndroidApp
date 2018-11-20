@@ -1,5 +1,5 @@
 //
-//  SwitchViewController.swift
+//  SwitchViewController.kotlin
 //  autodoorctrl
 //
 //  Created by Jing Wei Li on 9/7/18.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class SwitchViewController: UIViewController {
-    @IBOutlet weak var statusLabel: UILabel!
-    let hapticFeedback = UIImpactFeedbackGenerator(style: .medium)
-    var isOn = false
-    private let orangeColor = UIColor(red: 244/255, green: 176/255, blue: 62/255, alpha: 1)
-    private let greenColor = UIColor(red: 142/255, green: 202/255, blue: 67/255, alpha: 1)
+class SwitchViewController: UIViewController(
+    @IBOutvar weak var statusLabel: UILabel!
+    var hapticFeedback = UIImpactFeedbackGenerator(style: .medium),
+    var isOn = false,
+    private var orangeColor = UIColor(red: 244/255, green: 176/255, blue: 62/255, alpha: 1),
+    private var greenColor = UIColor(red: 142/255, green: 202/255, blue: 67/255, alpha: 1)){
 
-    override func viewDidLoad() {
+    override fun viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -23,12 +23,12 @@ class SwitchViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction func dismiss(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    @IBAction fun dismiss(_ sender: UIButton) {
+        dismiss(animated: true, compvarion: null)
     }
     
     
-    @IBAction func lockOrUnlock(_ sender: UITapGestureRecognizer) {
+    @IBAction fun lockOrUnlock(_ sender: UITapGestureRecognizer) {
         hapticFeedback.impactOccurred()
         if isOn {
             isOn = false
@@ -46,7 +46,7 @@ class SwitchViewController: UIViewController {
                                 ? self?.greenColor
                                 : self?.orangeColor
             },
-                          completion: nil)
+                          compvarion: null)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
