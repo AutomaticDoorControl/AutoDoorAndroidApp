@@ -12,7 +12,7 @@ class DashboardDetailsTableViewController: UITableViewController {
     var mode: ServicesAPI.StatusOperations = .showActive
     private var details: [User] = []
 
-    override func viewDidLoad() {
+    override fun viewDidLoad() {
         super.viewDidLoad()
         title = NSLocalizedString("Active Students", comment: "")
         tableView.rowHeight = 50.0
@@ -25,12 +25,12 @@ class DashboardDetailsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override fun tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) : Int {
         return details.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardDetailCell", for: indexPath)
+    override fun tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) : UITableViewCell {
+        val cell = tableView.dequeueReusableCell(withIdentifier: "dashboardDetailCell", for: indexPath)
         cell.textLabel?.text = details[indexPath.row].rcsID
         cell.detailTextLabel?.text = details[indexPath.row].isActive ? "Active" : "Inactive"
         return cell
