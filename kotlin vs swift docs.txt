@@ -1,0 +1,28 @@
+Syntacial differences
+
+Kotlin           Swift
+fun              func
+val              let
+null             nil
+trait            protocol
+constructor      init
+:                ->
+Any              AnyObject
+!!               !
+
+
+
+Function differences
+
+Kotlin                                      Swift
+fun hello(world: String):String{            func hello(_ world:String)->String{
+return "hello $world"                       return "hello $world"
+
+
+class declaration differences
+Kotlin					    Swift
+class intTest(				    clas intTest{	    
+var int1: int,                              var int1: int
+var int2: int){                             var int2: int
+fun Description() =                         func Description()->String{
+"hello world"			            return "hello world"
